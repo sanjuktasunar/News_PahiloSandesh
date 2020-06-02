@@ -1,0 +1,93 @@
+﻿
+@{
+    ViewBag.Title = "CreateParentCategory";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<!-- page content -->
+<div class="right_col" role="main">
+    <div class="">
+        <div class="page-title">
+            <div class="title_left">
+                <h3>Add News</h3>
+            </div>
+        </div>
+        <div class="clearfix"></div>
+        <div class="row">
+            <div class="col-md-12 col-sm-12 ">
+                <div class="x_panel">
+
+                    <div class="x_content">
+                        <br />
+                        <form id="demo-form2" data-parsley-validate method="post" action="~/News/CreateNews" class="form-horizontal form-label-left">
+
+                            <div class="item form-group">
+                                <label class="col-form-label col-md-3 col-sm-3 label-align" for="last-name">
+                                    Select Category <span class="required">*</span>
+                                </label>
+                                <div class="col-md-6 col-sm-6 ">
+                                    <select name="CategoryId" class="form-control">
+                                        <option value=""> ---------------Select Category-------------- </option>
+                                        @foreach (var x in ViewBag.Category)
+                                        {
+                                            <option value="@x.CategoryId">@x.CategoryName</option>
+                                        }
+
+                                    </select>
+                                    @*<input type="text" id="last-name" name="ParentCategoryName" required="required" class="form-control">*@
+                                </div>
+                            </div>
+                            <div class="item form-group">
+                                <label class="col-form-label col-md-3 col-sm-3 label-align" for="last-name">
+                                    News Title <span class="required">*</span>
+                                </label>
+                                <div class="col-md-6 col-sm-6 ">
+                                    <input type="text" id="last-name" name="NewsTitle" class="form-control">
+                                </div>
+                            </div>
+                            <div class="item form-group">
+                                <label class="col-form-label col-md-3 col-sm-3 label-align" for="last-name">
+                                    News Description <span class="required">*</span>
+                                </label>
+                                <div class="col-md-6 col-sm-6 ">
+                                    <textarea class="form-control" name="NewsDescription">
+                                    </textarea>
+                                    @*<input type="text" id="last-name" name="CategoryName" class="form-control">*@
+                                </div>
+                            </div>
+                            <div class="item form-group">
+                                <label class="col-form-label col-md-3 col-sm-3 label-align" for="last-name">
+                                    Select Image <span class="required">*</span>
+                                </label>
+                                <div class="col-md-6 col-sm-6 ">
+                                    <input type="file" id="last-name" name="ImageName" class="form-control">
+                                </div>
+                            </div>
+                            <div class="item form-group">
+                                <label class="col-form-label col-md-3 col-sm-3 label-align" for="last-name" style="margin-top:7px;">
+                                    Status <span class="required">*</span>
+                                </label>
+                                <div class="col-md-6 col-sm-6 ">
+                                    <br />
+                                    <input type="radio" name="Status" value="true" checked="checked" />Active
+                                    <input type="radio" name="Status" value="false" />Inactive
+                                </div>
+                            </div>
+                           
+
+                            <div class="ln_solid"></div>
+                            <div class="item form-group">
+                                <div class="col-md-6 col-sm-6 offset-md-3">
+                                    <button type="submit" class="btn btn-success">Submit</button>
+                                    <a href="~/News/News" class="btn btn-danger"> Cancel </a>
+                                </div>
+                            </div>
+
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- /page content -->

@@ -1,0 +1,93 @@
+﻿@model WebApplication3.Models.Category
+
+@{
+    ViewBag.Title = "UpdateParentCategory";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<!-- page content -->
+<div class="right_col" role="main">
+    <div class="">
+        <div class="page-title">
+            <div class="title_left">
+                <h3>Update Parent Category</h3>
+            </div>
+        </div>
+        <div class="clearfix"></div>
+        <div class="row">
+            <div class="col-md-12 col-sm-12 ">
+                <div class="x_panel">
+
+                    <div class="x_content">
+                        <br />
+                        <form id="demo-form2" data-parsley-validate method="post" action="~/Category/UpdateCategory" class="form-horizontal form-label-left">
+                            <input type="hidden" value="@Model.CategoryId" name="CategoryId" />
+                            <input type="hidden" value="@Model.CreatedOn" name="CreatedOn" />
+                            <input type="hidden" value="@Model.CreatedByUserId" name="CreatedByUserId" />
+                            <div class="item form-group">
+                                <label class="col-form-label col-md-3 col-sm-3 label-align" for="last-name">
+                                    Select Parent Category <span class="required">*</span>
+                                </label>
+                                <div class="col-md-6 col-sm-6 ">
+                                    <select name="ParentCategoryId" class="form-control">
+                                        <option value=""> ---------------Select Parent Category-------------- </option>
+                                        @foreach (var x in ViewBag.ParentCategory)
+                                        {
+                                            if (Model.ParentCategoryId == x.ParentCategoryId)
+                                            {
+                                                <option value="@x.ParentCategoryId" selected="selected">@x.ParentCategoryName</option>
+                                            }
+                                            else
+                                            {
+                                                <option value="@x.ParentCategoryId">@x.ParentCategoryName</option>
+                                            }
+                                        }
+
+                                    </select>
+                                    @*<input type="text" id="last-name" name="ParentCategoryName" required="required" class="form-control">*@
+                                </div>
+                            </div>
+                            <div class="item form-group">
+                                <label class="col-form-label col-md-3 col-sm-3 label-align" for="last-name">
+                                    Category Name <span class="required">*</span>
+                                </label>
+                                <div class="col-md-6 col-sm-6 ">
+                                    <input type="text" id="last-name" name="CategoryName" value="@Model.CategoryName" class="form-control">
+                                </div>
+                            </div>
+                            <div class="item form-group">
+                                <label class="col-form-label col-md-3 col-sm-3 label-align" for="last-name" style="margin-top:7px;">
+                                    Status <span class="required">*</span>
+                                </label>
+                                <div class="col-md-6 col-sm-6 ">
+                                    <br />
+                                    @if (Model.Status == true)
+                                    {
+                                        <input type="radio" name="Status" value="true" checked="checked" /><label>Active</label>
+                                        <input type="radio" name="Status" value="false" /><label>Inactive</label>
+                                    }
+                                    else
+                                    {
+                                        <input type="radio" name="Status" value="true" /><label>Active</label>
+                                        <input type="radio" name="Status" value="false" checked="checked" /><label>Inactive</label>
+                                    }
+                                </div>
+                            </div>
+
+
+                            <div class="ln_solid"></div>
+                            <div class="item form-group">
+                                <div class="col-md-6 col-sm-6 offset-md-3">
+                                    <button type="submit" class="btn btn-success">Submit</button>
+                                    <a href="~/Category/Category" class="btn btn-danger"> Cancel </a>
+                                </div>
+                            </div>
+
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- /page content -->
